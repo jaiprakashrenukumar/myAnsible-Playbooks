@@ -1,0 +1,13 @@
+---
+- hosts: ubuntu
+  become: yes
+  tasks:
+  - name: create a group dev
+    group:
+      name: dev
+      state: present # default is present
+  - name: create a user(jai) and add the user to sudo and dev group
+    user:
+      name: jai
+      shell: /bin/bash
+      groups: dev,sudo # for adding user in a single group u can use group

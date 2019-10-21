@@ -1,0 +1,9 @@
+---
+- hosts: ubuntu
+  become: yes
+  tasks:
+  - name: update cache and install tomcat7
+    apt:
+      name: tomcat7
+      state: present
+      update_cache: yes

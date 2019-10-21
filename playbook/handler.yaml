@@ -1,0 +1,25 @@
+#1. install tomcat
+#2. download jenkins from web
+#3. restart jenkins
+#4. copy user xml 
+#5. restart jenkins
+---
+- hosts: ubuntu
+  become: yes
+  tasks:
+  - name: install tomcat7
+    apt:
+      name: tomcat7
+      state: present
+      update_cache: yes
+    notify: restart tomcat7
+  - name: copy the config file
+    copy:
+      src: /home/ansible/jai.txt
+      dest: /home/ansible/jaiprakash.txt
+    notify: restart tomcat7
+  handlers:
+    - name: restart tomcat7
+      service:
+         name: tomcat7
+         state: restarted

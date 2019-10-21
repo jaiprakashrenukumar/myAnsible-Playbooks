@@ -1,0 +1,13 @@
+---
+- hosts: centos
+  become: yes
+  tasks:
+  - name: copy a file to the client machines
+    copy:
+      src: /home/ansible/jai.txt
+      dest: /home/ansible/jai.yaml
+  - name: download a file from http url
+    get_url:
+      url: https://education.github.com/git-cheat-sheet-education.pdf
+      dest: /home/ansible/git.pdf
+      validate_certs: False 
