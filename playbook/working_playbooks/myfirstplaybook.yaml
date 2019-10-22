@@ -1,5 +1,0 @@
----
-- hosts: all
-  tasks:
-  - name: this is to ping all machines
-    ping:

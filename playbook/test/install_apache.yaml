@@ -1,9 +1,0 @@
----
-- hosts: ubuntu
-  become: yes
-  tasks:
-  - name : update cache and install apache2 
-    apt:
-      name: apache2
-      state: present
-      update_cache: yes
