@@ -1,0 +1,27 @@
+---
+- hosts: ubuntu
+  become: yes
+  gather_facts: no
+  tasks:
+  - name: this is to install apache2
+    apt:
+      name: apache2
+      state: present
+      update_cache: yes
+    notify: restart apache2
+  
+  - name: copy config file
+    copy:
+      src: /home/ansible/file/webserver/index.html
+      dest: /var/www/html/index.html
+      owner: root
+      group: root
+      mode: '0644'
+    notify: restart apache2
+    
+  handlers:
+  - name: restart apache2
+    service:
+        name: apache2
+        state: restarted
+          
