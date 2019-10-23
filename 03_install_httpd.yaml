@@ -1,0 +1,15 @@
+---
+- hosts: centos
+  become: yes
+  tasks:
+  - name: install httpd in centos machine
+    yum:
+      name: httpd
+      state: present
+      update_cache: yes
+  - name: start httpd service 
+    service:
+       name: httpd
+       state: started
+       enabled: yes
+
