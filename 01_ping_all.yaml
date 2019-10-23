@@ -1,7 +1,0 @@
----
-- hosts: all
-  become: yes
-  tasks:
-  - name: this is test the connectivity of all the host
-    ping:
-
